@@ -1,0 +1,203 @@
+@(metas: List[Meta])
+
+@main("Minhas Metas"){
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="@routes.Assets.at("javascripts/hello.js")" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+
+        <header class="jumbotron">
+            <div class="container" align="center">
+                <h2>Bem vindo a aplicação web: Minhas Metas!</h2>
+            </div>
+        </header>
+
+        <div id="pai">
+            <div id="painel" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 align="center">Cadastre sua meta</h3>
+                </div>
+
+                <div class="panel-body" align="center">
+                    <form method="post" action="/meta">
+                        <h5 align="center">Nome</h5>
+                        <input style="width:200px" name="Nome" type="text" required/><br>
+                        <h5 align="center">Descricao</h5>
+                        <input style="width:200px" name="Descricao" type="text" required/><br>
+
+                        <h5 align="center">Prioridade</h5>
+                        <select style="width:200px" name="Prioridade">
+                            <option value="alta">alta</option>
+                            <option value="media">média</option>
+                            <option value="baixa">baixa</option>
+                        </select><br>
+
+                        <h5 align="center">Prazo</h5>
+                        <select style="width:200px" name="Prazo">
+                            <option value ="1° semana">1° semana</option>
+                            <option value ="2° semana">2° semana</option>
+                            <option value ="3° semana">3° semana</option>
+                            <option value ="4° semana">4° semana</option>
+                            <option value ="5° semana">5° semana</option>
+                            <option value ="6° semana">6° semana</option>
+                        </select><br><br>
+                        <input type="submit" value="cadastrar"/>
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <div id="painel2" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 align="center">Metas Alcançadas</h3>
+                </div>
+                @for(meta <- metas) {
+                    @if( meta.getStatus.equals("Cumprida")) {
+                        <div class="comMeta2">
+                            <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                            <div class="descricao">
+                                <p>Cumprida!</p>
+                                <p>@meta.getDescricao()</p>
+                            </div>
+                            <br>
+                        </div>
+                    }
+                }
+            </div>
+
+            <div id="painel3" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 align="center">FAQ</h3>
+                </div>
+
+                <div class="panel-body">
+                    <h4>Como funciona o prazo?</h4>
+                    <h5>Como usuário, cadastro uma nova meta, informando uma descrição, prioridade e escolhendo uma semana no futuro na qual desejo que tenha alcançado essa meta,
+                        para que assim minha lista de metas possa ser populada.
+                        Metas podem ser adicionadas para as próximas 6 semanas apenas.</h5>
+                    <h4>Como funciona o sistema de metas?</h4>
+                    <h5>Como usuário, marco uma meta de minha lista como alcançada, e o sistema a destaca de maneira diferente das não alcançadas,
+                        para que assim eu acompanhe meu progresso alcançando as metas em geral.
+                        A lista de metas deve agora mostrar para cada semana o total de metas, o total de metas alcançadas e o total das a alcançar.</h5>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="pai2" class="panel panel-default">
+            <div class="panel-heading">
+                <h3 align="center">Metas em andamento</h3>
+            </div>
+
+            <div id="menu" class="panel-body">
+                <div class="container">
+                    <div id="titulo" class="page-header" align="center"></div>
+
+                    @for(meta <- metas) {
+                        @if(meta.getPrazo().equals("1° semana") && meta.getStatus.equals("Em processo")) {
+                            <div class="comMeta">
+                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div class="descricao">
+                                <p>Prioridade @meta.getPrioridade()</p>
+                                <p>@meta.getDescricao()</p>
+                                </div>
+                                <br>
+                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="container">
+                    <div id="titulo2" class="page-header" align="center"></div>
+
+                    @for(meta <- metas) {
+                        @if(meta.getPrazo().equals("2° semana") && meta.getStatus.equals("Em processo")) {
+                            <div class="comMeta">
+                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div class="descricao">
+                                    <p>Prioridade @meta.getPrioridade()</p>
+                                    <p>@meta.getDescricao()</p>
+                                </div>
+                                <br>
+                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="container">
+                    <div id="titulo3" class="page-header" align="center"></div>
+
+                    @for(meta <- metas) {
+                        @if(meta.getPrazo().equals("3° semana") && meta.getStatus.equals("Em processo")) {
+                            <div class="comMeta">
+                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div class="descricao">
+                                    <p>Prioridade @meta.getPrioridade()</p>
+                                    <p>@meta.getDescricao()</p>
+                                </div>
+                                <br>
+                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="container">
+                    <div id="titulo4" class="page-header" align="center"></div>
+
+                    @for(meta <- metas) {
+                        @if(meta.getPrazo().equals("4° semana") && meta.getStatus.equals("Em processo")) {
+                            <div class="comMeta">
+                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div class="descricao">
+                                    <p>Prioridade @meta.getPrioridade()</p>
+                                    <p>@meta.getDescricao()</p>
+                                </div>
+                                <br>
+                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="container">
+                    <div id="titulo5" class="page-header" align="center"></div>
+
+                    @for(meta <- metas) {
+                        @if(meta.getPrazo().equals("5° semana") && meta.getStatus.equals("Em processo")) {
+                            <div class="comMeta">
+                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div class="descricao">
+                                    <p>Prioridade @meta.getPrioridade()</p>
+                                    <p>@meta.getDescricao()</p>
+                                </div>
+                                <br>
+                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="container">
+                    <div id="titulo6" class="page-header" align="center"></div>
+
+                    @for(meta <- metas) {
+                        @if(meta.getPrazo().equals("6° semana") && meta.getStatus.equals("Em processo")) {
+                            <div class="comMeta">
+                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div class="descricao">
+                                    <p>Prioridade @meta.getPrioridade()</p>
+                                    <p>@meta.getDescricao()</p>
+                                </div>
+                                <br>
+                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                            </div>
+                        }
+                    }
+                </div>
+
+            </div>
+
+        </div>
+}
