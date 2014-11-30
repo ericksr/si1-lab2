@@ -58,12 +58,17 @@
                 @for(meta <- metas) {
                     @if( meta.getStatus.equals("Cumprida")) {
                         <div class="comMeta2">
-                            <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                            <div align="center"><h4>@meta.getNome()</h4></div>
                             <div class="descricao">
                                 <p>Cumprida!</p>
                                 <p>@meta.getDescricao()</p>
                             </div>
                             <br>
+                            <div style="float:right">
+                                <form method="post" action="@routes.Application.deletaMeta(meta.getId())">
+                                    <input type="submit" value="X"/>
+                                </form>
+                            </div>
                         </div>
                     }
                 }
@@ -95,103 +100,145 @@
 
             <div id="menu" class="panel-body">
                 <div class="container">
-                    <div id="titulo" class="page-header" align="center"></div>
+                    <div class="page-header" align="center"><h3>1° semana</h3></div>
 
                     @for(meta <- metas) {
                         @if(meta.getPrazo().equals("1° semana") && meta.getStatus.equals("Em processo")) {
                             <div class="comMeta">
-                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div align="center"><h4>@meta.getNome()</h4></div>
                                 <div class="descricao">
                                 <p>Prioridade @meta.getPrioridade()</p>
                                 <p>@meta.getDescricao()</p>
                                 </div>
                                 <br>
-                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                                <div style="float:left"><form method="post" action="@routes.Application.alteraMeta(meta.getId())">
+                                    <input type="submit" value="Cumprida"/>
+                                </form></div>
+                                <div style="float:right">
+                                    <form method="post" action="@routes.Application.deletaMeta(meta.getId())">
+                                        <input type="submit" value="X"/>
+                                    </form>
+                                </div>
                             </div>
                         }
                     }
                 </div>
                 <div class="container">
-                    <div id="titulo2" class="page-header" align="center"></div>
+                    <div class="page-header" align="center"><h3>2° semana</h3></div>
 
                     @for(meta <- metas) {
                         @if(meta.getPrazo().equals("2° semana") && meta.getStatus.equals("Em processo")) {
                             <div class="comMeta">
-                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div align="center"><h4>@meta.getNome()</h4></div>
                                 <div class="descricao">
                                     <p>Prioridade @meta.getPrioridade()</p>
                                     <p>@meta.getDescricao()</p>
                                 </div>
                                 <br>
-                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                                <div style="float:left"><form method="post" action="@routes.Application.alteraMeta(meta.getId())">
+                                    <input type="submit" value="Cumprida"/>
+                                </form></div>
+                                <div style="float:right">
+                                    <form method="post" action="@routes.Application.deletaMeta(meta.getId())">
+                                        <input type="submit" value="X"/>
+                                    </form>
+                                </div>
                             </div>
                         }
                     }
                 </div>
                 <div class="container">
-                    <div id="titulo3" class="page-header" align="center"></div>
+                    <div class="page-header" align="center"><h3>3° semana</h3></div>
 
                     @for(meta <- metas) {
                         @if(meta.getPrazo().equals("3° semana") && meta.getStatus.equals("Em processo")) {
                             <div class="comMeta">
-                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div align="center"><h4>@meta.getNome()</h4></div>
                                 <div class="descricao">
                                     <p>Prioridade @meta.getPrioridade()</p>
                                     <p>@meta.getDescricao()</p>
                                 </div>
                                 <br>
-                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                                <div style="float:left"><form method="post" action="@routes.Application.alteraMeta(meta.getId())">
+                                    <input type="submit" value="Cumprida"/>
+                                </form></div>
+                                <div style="float:right">
+                                    <form method="post" action="@routes.Application.deletaMeta(meta.getId())">
+                                        <input type="submit" value="X"/>
+                                    </form>
+                                </div>
                             </div>
                         }
                     }
                 </div>
                 <div class="container">
-                    <div id="titulo4" class="page-header" align="center"></div>
+                    <div class="page-header" align="center"><h3>4° semana</h3></div>
 
                     @for(meta <- metas) {
                         @if(meta.getPrazo().equals("4° semana") && meta.getStatus.equals("Em processo")) {
                             <div class="comMeta">
-                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div align="center"><h4>@meta.getNome()</h4></div>
                                 <div class="descricao">
                                     <p>Prioridade @meta.getPrioridade()</p>
                                     <p>@meta.getDescricao()</p>
                                 </div>
                                 <br>
-                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                                <div style="float:left"><form method="post" action="@routes.Application.alteraMeta(meta.getId())">
+                                    <input type="submit" value="Cumprida"/>
+                                </form></div>
+                                <div style="float:right">
+                                    <form method="post" action="@routes.Application.deletaMeta(meta.getId())">
+                                        <input type="submit" value="X"/>
+                                    </form>
+                                </div>
                             </div>
                         }
                     }
                 </div>
                 <div class="container">
-                    <div id="titulo5" class="page-header" align="center"></div>
+                    <div class="page-header" align="center"><h3>5° semana</h3></div>
 
                     @for(meta <- metas) {
                         @if(meta.getPrazo().equals("5° semana") && meta.getStatus.equals("Em processo")) {
                             <div class="comMeta">
-                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div align="center"><h4>@meta.getNome()</h4></div>
                                 <div class="descricao">
                                     <p>Prioridade @meta.getPrioridade()</p>
                                     <p>@meta.getDescricao()</p>
                                 </div>
                                 <br>
-                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                                <div style="float:left"><form method="post" action="@routes.Application.alteraMeta(meta.getId())">
+                                    <input type="submit" value="Cumprida"/>
+                                </form></div>
+                                <div style="float:right">
+                                    <form method="post" action="@routes.Application.deletaMeta(meta.getId())">
+                                        <input type="submit" value="X"/>
+                                    </form>
+                                </div>
                             </div>
                         }
                     }
                 </div>
                 <div class="container">
-                    <div id="titulo6" class="page-header" align="center"></div>
+                    <div class="page-header" align="center"><h3>6° semana</h3></div>
 
                     @for(meta <- metas) {
                         @if(meta.getPrazo().equals("6° semana") && meta.getStatus.equals("Em processo")) {
                             <div class="comMeta">
-                                <div align="center"><h4>@meta.getNome() <img src="http://seekr.com.br/seekr/images/icones/lixeira.png"/></h4></div>
+                                <div align="center"><h4>@meta.getNome()</h4></div>
                                 <div class="descricao">
                                     <p>Prioridade @meta.getPrioridade()</p>
                                     <p>@meta.getDescricao()</p>
                                 </div>
                                 <br>
-                                <div align="center"><input class="alcancar" type="submit" value="cumprida"/></div>
+                                <div style="float:left"><form method="post" action="@routes.Application.alteraMeta(meta.getId())">
+                                    <input type="submit" value="Cumprida"/>
+                                </form></div>
+                                <div style="float:right">
+                                    <form method="post" action="@routes.Application.deletaMeta(meta.getId())">
+                                        <input type="submit" value="X"/>
+                                    </form>
+                                </div>
                             </div>
                         }
                     }

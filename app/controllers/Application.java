@@ -37,5 +37,20 @@ public class Application extends Controller {
         List<Meta> metas = dao.findAllByClassName(Meta.class.getName());
         return ok(index.render(metas));
     }
+
+    @Transactional
+    public static Result alteraMeta(long id){
+        Meta meta = dao.findByEntityId(Meta.class, id);
+        meta.setStatus("Cumprida");
+        dao.merge(meta);
+        return index();
+    }
+
+    @Transactional
+    public static Result deletaMeta(long id){
+        DynamicForm form = Form.form().bindFromRequest();
+        dao.removeById(Meta.class, id);
+        return index();
+    }
 }
 

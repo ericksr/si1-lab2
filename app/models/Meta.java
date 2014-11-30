@@ -13,7 +13,7 @@ public class Meta {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String nome;
     private String descricao;
     private String prioridade;
@@ -29,6 +29,10 @@ public class Meta {
     }
 
     public Meta() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
